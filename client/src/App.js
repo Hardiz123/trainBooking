@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const baseUrl = "https://mernapptrain.onrender.com";
 function App() {
   // create a request handler to get all the data from the server
   const [seats, setSeats] = useState([]);
@@ -11,7 +12,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/seats").then((response) => {
+    axios.get(`${baseUrl}/seats`).then((response) => {
       setSeats(response.data);
     });
 
