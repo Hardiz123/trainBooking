@@ -19,7 +19,10 @@ trainRouter.get("/seatStatus", async (req, res) => {
 });
 
 trainRouter.post("/bookSeat", async (req, res) => {
-  const { count } = req.body;
+  let { count } = req.body;
+
+  count = parseInt(count);
+
 
   const seatsInRow = 7; // number of seats in a row
   const rowsInCoach = 12; // number of rows in the coach
@@ -171,7 +174,6 @@ trainRouter.post("/bookSeat", async (req, res) => {
   let response = seatsBooked.map((seat) => {
     return seat.row + seat.seat;
   });
-
   res.send("Seats booked: " + JSON.stringify(response));
 });
 
