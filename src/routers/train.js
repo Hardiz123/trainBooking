@@ -156,6 +156,11 @@ trainRouter.post("/bookSeat", async (req, res) => {
       if (count > newSeats.length) {
         newSeats = [...newSeats, ...seatsInRow];
       }
+      if (newSeats.length > count) {
+        while (newSeats.length !== count) {
+          newSeats.pop();
+        }
+      } 
       if (newSeats.length === count) {
         seatsToBook = newSeats;
         break;
